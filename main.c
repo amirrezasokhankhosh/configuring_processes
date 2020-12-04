@@ -49,15 +49,13 @@ int main(int argc, char *argv[])
         fclose(output);
     }
 
-    printf("\nFINAL ANSWERS WITH SLEEPING TIMES:\n");
-    for (int i = 0 ; i < firsts * seconds ; i++){
-        printf("%d  " , sleeps[i]);
+    FILE *output_main = fopen("./output_main.txt" , "w");
+    for (int i = 0 ; i < 4 ; i++){
+        fprintf(output_main , "%d\n%d\n%f\n" , configs[i][0] , configs[i][1] , answers[i]);
     }
-    printf("\n\n");
-    for (int i = 0; i < 4; i++)
-    {
-        printf("CONFIG :    first: %d | second: %d  -->  Total time : %f seconds\n\n", configs[i][0], configs[i][1], answers[i]);
-    }
+    fclose(output_main);
+
+    return 0;
 }
 
 void writeInput(int firsts, int seconds, int sleeps[])
